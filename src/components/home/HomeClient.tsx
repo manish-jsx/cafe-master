@@ -99,17 +99,24 @@ export function HomeClient() {
               CaféMaster
             </span>
           </Link>
-          <nav className="hidden md:flex space-x-8">
-            {["Features", "Pricing", "Testimonials", "FAQ"].map((item) => (
+            <nav className="hidden md:flex space-x-8">
+            {[
+              { name: "Features", href: "#features" },
+              { name: "Pricing", href: "#pricing" },
+              { name: "Testimonials", href: "#testimonials" },
+              { name: "FAQ", href: "#faq" },
+              { name: "Blog", href: "/blog" },
+              { name: "Resources", href: "/resources" }
+            ].map((item) => (
               <Link
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="text-foreground/80 hover:text-primary transition-colors"
+              key={item.name}
+              href={item.href}
+              className="text-foreground/80 hover:text-primary transition-colors"
               >
-                {item}
+              {item.name}
               </Link>
             ))}
-          </nav>
+            </nav>
           <div className="flex items-center space-x-4">
             <Button variant="outline" asChild>
               <Link href="/login">Sign In</Link>
@@ -299,7 +306,8 @@ export function HomeClient() {
       </main>
 
       {/* Enhanced Footer */}
-      <footer className="bg-muted py-12">
+      <Footer />
+      {/* <footer className="bg-muted py-12">
         <div className="container mx-auto text-center">
           <p>&copy; 2025 CaféMaster. All rights reserved.</p>
           <div className="mt-4 space-x-4">
@@ -311,7 +319,7 @@ export function HomeClient() {
             </Link>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </div>
   )
 }
