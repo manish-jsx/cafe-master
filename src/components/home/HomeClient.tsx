@@ -2,7 +2,11 @@
 
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-// import { MotionDiv } from "@/components/animations/MotionWrapper";
+import { FeatureShowcase } from "@/components/home/FeatureShowcase";
+
+import { AnimatedBackground } from "@/components/animations/AnimatedBackground";
+
+//import { MotionDiv } from "@/components/animations/MotionWrapper";
 
 // ...import oth
 
@@ -45,6 +49,7 @@ import { MotionDiv, MotionSection } from "@/components/animations/MotionWrapper"
 import dynamic from 'next/dynamic';
 import { useEffect } from 'react';
 import { TestimonialSection } from './TestimonialSection';
+import { SocialFloating } from "../SocialFloating";
 
 // Dynamic imports for components that use browser APIs
 const DynamicLottieWrapper = dynamic(
@@ -99,7 +104,7 @@ export function HomeClient() {
               CaféMaster
             </span>
           </Link>
-            <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-8">
             {[
               { name: "Features", href: "#features" },
               { name: "Pricing", href: "#pricing" },
@@ -109,14 +114,14 @@ export function HomeClient() {
               { name: "Resources", href: "/resources" }
             ].map((item) => (
               <Link
-              key={item.name}
-              href={item.href}
-              className="text-foreground/80 hover:text-primary transition-colors"
+                key={item.name}
+                href={item.href}
+                className="text-foreground/80 hover:text-primary transition-colors"
               >
-              {item.name}
+                {item.name}
               </Link>
             ))}
-            </nav>
+          </nav>
           <div className="flex items-center space-x-4">
             <Button variant="outline" asChild>
               <Link href="/login">Sign In</Link>
@@ -305,21 +310,8 @@ export function HomeClient() {
         {/* Rest of the sections... */}
       </main>
 
-      {/* Enhanced Footer */}
       <Footer />
-      {/* <footer className="bg-muted py-12">
-        <div className="container mx-auto text-center">
-          <p>&copy; 2025 CaféMaster. All rights reserved.</p>
-          <div className="mt-4 space-x-4">
-            <Link href="/privacy" className="text-sm text-muted-foreground hover:underline">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="text-sm text-muted-foreground hover:underline">
-              Terms of Service
-            </Link>
-          </div>
-        </div>
-      </footer> */}
+      <SocialFloating />
     </div>
   )
 }

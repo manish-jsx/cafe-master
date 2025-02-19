@@ -1,39 +1,38 @@
 'use client';
 
-import { motion } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { motion } from 'framer-motion';
 
-interface MotionProps {
+export const MotionDiv = motion.div;
+export const MotionSection = motion.section;
+
+interface MotionWrapperProps {
   children: React.ReactNode;
-  [key: string]: any;
+  className?: string;
+  delay?: number;
 }
 
-export function MotionDiv({ children, ...props }: MotionProps) {
-  const [isMounted, setIsMounted] = useState(false);
-  const ref = useRef(null);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return <div ref={ref}>{children}</div>;
-  }
-
-  return <motion.div {...props}>{children}</motion.div>;
+export function FadeInMotion({ children, className, delay = 0 }: MotionWrapperProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
 }
 
-export function MotionSection({ children, ...props }: MotionProps) {
-  const [isMounted, setIsMounted] = useState(false);
-  const ref = useRef(null);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return <section ref={ref}>{children}</section>;
-  }
-
-  return <motion.section {...props}>{children}</motion.section>;
+export function ScaleInMotion({ children, className, delay = 0 }: MotionWrapperProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5, delay }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
 }
