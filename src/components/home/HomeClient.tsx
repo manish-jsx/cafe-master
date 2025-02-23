@@ -123,9 +123,9 @@ export function HomeClient() {
             ))}
           </nav>
           <div className="flex items-center space-x-4">
-            <Button variant="outline" asChild>
+            {/* <Button variant="outline" asChild>
               <Link href="/login">Sign In</Link>
-            </Button>
+            </Button> */}
             <Button className="bg-[hsl(16,100%,50%)] hover:bg-[hsl(16,100%,45%)]" asChild>
               <Link href="/signup">Book Free Demo</Link>
             </Button>
